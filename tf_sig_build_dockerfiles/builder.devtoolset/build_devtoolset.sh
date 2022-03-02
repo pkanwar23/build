@@ -23,9 +23,11 @@ TARGET="$2"
 case "${VERSION}" in
 devtoolset-7)
   LIBSTDCXX_VERSION="6.0.24"
+  LIBSTDCXX_ABI="gcc4-compatible"
   ;;
 devtoolset-9)
   LIBSTDCXX_VERSION="6.0.28"
+  LIBSTDCXX_ABI="new"
   ;;
 *)
   echo "Usage: $0 {devtoolset-7|devtoolset-9} <target-directory>"
@@ -145,7 +147,7 @@ cd "${TARGET}-build"
       --enable-plugin \
       --enable-shared \
       --enable-threads=posix \
-      --with-default-libstdcxx-abi="gcc4-compatible" \
+      --with-default-libstdcxx-abi=${LIBSTDCXX_ABI} \
       --with-gcc-major-version-only \
       --with-linker-hash-style="gnu" \
       --with-tune="generic" \
