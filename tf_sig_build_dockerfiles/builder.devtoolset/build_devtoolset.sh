@@ -174,12 +174,10 @@ mv "/${TARGET}/usr/lib64/libstdc++.so.${LIBSTDCXX_VERSION}" \
 # Move the shared library to /${TARGET}/usr/lib/
 mv "/${TARGET}/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.18" \
    "/${TARGET}/usr/lib/"
-echo -e "OUTPUT_FORMAT(elf64-x86-64)\nINPUT ( libstdc++.so.6.0.18 -lstdc++_nonshared48 )" \
+echo -e "OUTPUT_FORMAT(elf64-x86-64)\nINPUT ( libstdc++.so.6.0.18 -lstdc++_nonshared44 )" \
    > "/${TARGET}/usr/lib/libstdc++.so.${LIBSTDCXX_VERSION}"
-cp "./x86_64-pc-linux-gnu/libstdc++-v3/src/.libs/libstdc++_nonshared48.a" \
+cp "./x86_64-pc-linux-gnu/libstdc++-v3/src/.libs/libstdc++_nonshared44.a" \
    "/${TARGET}/usr/lib"
-cp "./x86_64-pc-linux-gnu/libstdc++-v3/src/.libs/libstdc++_nonshared48.a" \
-   "/${TARGET}/usr/lib64"
 
 # Fix the libstdc++ symlink by pointing to the correct location. By default, these point to
 # /${TARGET}/usr/lib64/ but the library actually exists in /${TARGET}/usr/lib
